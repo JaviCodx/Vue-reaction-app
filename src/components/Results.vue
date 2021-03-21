@@ -17,7 +17,7 @@ export default {
   mounted() {
     if (this.reactionTime < 250) {
       this.rank = "That was really fast";
-    } else if (this.score < 400) {
+    } else if (this.reactionTime < 400) {
       this.rank = "Not great, not terrible";
     } else {
       this.rank = "You better check those reflexes";
