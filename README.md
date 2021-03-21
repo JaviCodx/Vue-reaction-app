@@ -1,5 +1,10 @@
 # reaction-timer
 
+## Live
+```
+https://vue-reaction-app.vercel.app/
+```
+
 ## Project setup
 ```
 npm install
