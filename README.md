@@ -1,9 +1,9 @@
 # reaction-timer
 
-## Live
-```
-https://vue-reaction-app.vercel.app/
-```
+## Demo
+
+[Live Demo](https://vue-reaction-app.vercel.app/)
+
 
 ## Project setup
 ```
