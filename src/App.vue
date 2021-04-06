@@ -1,6 +1,8 @@
 <template>
   <h1>Reaction Timer</h1>
   <button @click="start" :disabled="isPlaying">Start</button>
+  <button @click="clearSession" :disabled="isPlaying">Clear Session</button>
+
   <Block v-if="isPlaying" :delay="delay" @end="finish" />
   <Results v-if="showResults" :reactionTime="reactionTime" />
   <Ranking v-if="showResults" :scoreArray="scoreArray" />
@@ -27,6 +29,12 @@ export default {
       scoreArray: [],
     };
   },
+  mounted() {
+    this.scoreArray = localStorage.scoreArray
+      ? JSON.parse(localStorage.getItem("scoreArray"))
+      : [];
+    console.log(this.scoreArray);
+  },
   methods: {
     start() {
       this.delay = 2000 + Math.random() * 5000;
@@ -38,6 +46,12 @@ export default {
       this.showResults = true;
       this.reactionTime = reactionTime;
       this.scoreArray.push(reactionTime);
+      localStorage.setItem("scoreArray", JSON.stringify(this.scoreArray));
+    },
+    clearSession() {
+      this.scoreArray = [];
+      this.showResults = false;
+      localStorage.setItem("scoreArray", JSON.stringify(this.scoreArray));
     },
   },
 };
@@ -70,6 +84,9 @@ button {
   font-size: 1.2rem;
   cursor: pointer;
   letter-spacing: 1px;
+}
+button:last-of-type {
+  margin-left: 1em;
 }
 button:disabled {
   background: rgba(15, 175, 135, 0.5);
